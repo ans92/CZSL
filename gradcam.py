@@ -68,7 +68,7 @@ heatmap_j /= heatmap_j_max
 print(heatmap_j.shape)
 heatmap_j = resize(heatmap_j,(224,224),preserve_range=True)     
 
-
+#For color image
 cmap = mpl.cm.get_cmap('jet',256)
 heatmap_j2 = cmap(heatmap_j,alpha = 0.5);print(type(img))
 fig, axs = plt.subplots(1,1,figsize = (5,5))
@@ -76,6 +76,7 @@ axs.imshow((img*std+mean)[0].transpose(1,2,0))
 axs.imshow(heatmap_j2)
 plt.show()
 
+#For single channel image
 heatmap_j3 = (heatmap_j > 0.70)
 fig, axs = plt.subplots(1,1,figsize = (5,5))
 axs.imshow(((img*std+mean)[0][0])*heatmap_j3)
